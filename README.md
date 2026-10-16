@@ -80,3 +80,117 @@ cloudflared tunnel --url http://localhost:8080
 - This starts SEToolkit, which will be used in the next step to access the QR code generator module and convert our Cloudflare tunnel link into a QR code.
 
 
+## Step 8: SEToolkit Main Menu
+
+- After launching SEToolkit, the interactive menu displays several options for social engineering and penetration testing workflows.
+
+- <img width="1920" height="920" alt="Screenshot_2026-10-15_13_46_30" src="https://github.com/user-attachments/assets/fdaf81f5-b0af-4a36-8e07-7dc550cd40bb" />
+
+- In this setup, we select Option `1` (Social-Engineering Attacks) to access the sub-modules, which include the QR code generator.
+
+
+## Step 9: Selecting the QR Code Generator Module
+
+After selecting Social-Engineering Attacks from the main menu, SEToolkit opens a sub-menu listing various social engineering attack vectors.
+
+From this list, Option 8 (QRCode Generator Attack Vector) is selected to convert the generated URL into a QR code image.
+
+<img width="1920" height="920" alt="Screenshot_2026-10-15_13_46_49" src="https://github.com/user-attachments/assets/a05368f7-43b4-4128-b076-ff76edec3a29" />
+
+1) Spear-Phishing Attack Vectors: Used for crafting targeted email phishing attacks with custom attachments or inline links.
+
+2) Website Attack Vectors: Tools for web-based attacks such as cloning login pages, credential harvesting, and web jackit vectors.
+
+3) Infectious Media Generator: Creates autorun files or malicious payloads designed for removable storage devices like USB drives.
+
+4) Create a Payload and Listener: Generates standalone executable payloads paired with network listeners for remote testing.
+
+5) Mass Mailer Attack: Sends bulk phishing campaigns to multiple targets using customized templates.
+
+6) Arduino-Based Attack Vector: Programs microcontroller boards to execute keystroke injection and hardware-based attacks.
+
+7) Wireless Access Point Attack Vector: Sets up rogue Wi-Fi access points to intercept network traffic and credentials.
+
+8) QRCode Generator Attack Vector: Takes any web URL and encodes it directly into a standard QR code image file.
+
+9) PowerShell Attack Vectors: Utilizes custom PowerShell scripts for fileless execution vectors on host machines.
+
+10) Third Party Modules: Additional community-contributed modules and integration tools.
+
+# For this project, option 8 (QRCode Generator Attack Vector) is selected to proceed with encoding the phishing URL into a scannable QR code image.
+
+
+## Step 11: Generating and Saving the QR Code
+
+After selecting option 8, SEToolkit asks for the destination URL.
+
+- Entere the copied URL of cloudflared from zphisher :  https://successful-software-months-lopez.trycloudflare.com
+
+- Once submitted, SEToolkit generates the QR code image and saves it to the default path:
+
+- File Path: /root/.set/reports/qrcode_attack.png
+
+- ## Step 12: Delivering the QR Code to the Victim
+
+- Now that the QR code image is generated, it can be delivered to the target using standard social engineering channels. 
+
+- Common delivery methods for this lab setup include:
+
+- 1. Email Phishing: Attaching the QR code image or embedding it inside a crafted email disguised as an urgent Microsoft security alert or password reset prompt.
+- 2. Physical Posters / Flyers: Printing the QR code and placing it in target physical locations, asking users to scan for access or verification.
+- 3. Direct Messaging: Sending the QR code image through messaging platforms or social media vectors.
+
+- Once the target scans the QR code using their smartphone camera, they will be redirected to our Cloudflare tunneled Microsoft landing page, where any entered credentials will be logged
+- in real-time in the Zphisher terminal window.
+
+
+## Victim Interaction and Credential Capture
+
+- When the target scans the generated QR code, their phone opens the Cloudflare tunnel URL and loads the cloned Microsoft sign-in page.
+
+### Landing Page Behavior
+- The webpage mirrors the official Microsoft login interface, asking the user to input their account email or username.
+
+- <img width="1884" height="890" alt="Screenshot 2026-10-15 234427" src="https://github.com/user-attachments/assets/c37fbc14-787c-4236-a9bb-efa05e8e468e" />
+
+
+## Step 14: Captured Credentials Logged in Real Time
+
+Once the target enters their credentials on the phishing page, Zphisher intercepts and logs the submitted data directly in the terminal window.
+
+### Information Captured
+
+- <img width="1920" height="920" alt="Screenshot_2026-10-15_13_57_24" src="https://github.com/user-attachments/assets/edb5f248-602e-4b4d-9867-dc5554fcc05f" />
+
+
+* Victim IP Address: The IP address used during the connection is recorded and stored locally in `auth/ip.txt`.
+* Login Credentials: The submitted account username (`setoolkit@zphisher.com`) and password (`combination`) are captured and saved in `auth/usernames.dat`.
+
+After logging the input details, the terminal listener returns to a waiting state for any subsequent connections.
+
+
+
+## How to Stay Safe Against Quishing Attacks
+- Preventing QR code phishing in real-world environments comes down to a few practical defense steps.
+
+- First, companies should move toward hardware security keys like FIDO2 or WebAuthn for multi-factor authentication. Traditional code-based logins can sometimes be intercepted by clever
+- phishing tools, but physical keys are tied to the actual website domain, making them much harder to trick.
+
+- Second, email systems should be configured to scan image attachments. Modern email security gateways can detect QR codes inside messages and check the hidden web links before the email
+- even lands in an inbox.
+
+- Third, awareness matters a lot. Users should always double-check the website address in their browser before typing in any credentials, especially on mobile phones where full URLs are
+- often shortened or hidden.
+
+
+
+
+
+
+
+
+
+
+
+
+
